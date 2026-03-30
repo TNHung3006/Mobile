@@ -11,7 +11,12 @@ class PageRss extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(controller.currentResourceName),backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: GetBuilder<SimpleControllerRss>(
+            id: "title",
+            builder: (controller) {
+              return Text(controller.currentResourceName);
+            }
+        ),backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         actions: [
           GetBuilder<SimpleControllerRss>(
               init: controller,

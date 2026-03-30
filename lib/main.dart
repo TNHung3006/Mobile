@@ -2,8 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:ngoc_hung66131218_flutter_app/page_home.dart';
 import 'package:ngoc_hung66131218_flutter_app/profile/profile.dart';
 import 'package:ngoc_hung66131218_flutter_app/uiex.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-void main() {
+Future<void> main() async{
+  await Supabase.initialize(
+    url: 'https://akyhcgguuexdrelwgewr.supabase.co',
+    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFreWhjZ2d1dWV4ZHJlbHdnZXdyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ4NDYxNDAsImV4cCI6MjA5MDQyMjE0MH0.b2JlKmeOjZzfrGs-O7ljZaoluoPxXoVJGdT1vjWLOKA',
+  );
+
   runApp(const MyApp());
 }
 

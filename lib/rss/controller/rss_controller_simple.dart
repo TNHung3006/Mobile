@@ -46,7 +46,7 @@ class SimpleControllerRss extends GetxController{
       //3. thiet lap _rssUrl
       _rssUrl = currentResource.resourceHeaders.values.toList()[0];
       //4. update: cac Getbuilder:, resources, resourceName, headers
-      update(["resource", "header"]);
+      update(["resource", "title", "header"]);
       //5. doc Rss
       readRss();
     }
