@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:ngoc_hung66131218_flutter_app/Test-gk/mau/baiontap/tinhtoan.dart';
+import 'package:ngoc_hung66131218_flutter_app/Test-gk/thi-gk-test.dart';
 import 'package:ngoc_hung66131218_flutter_app/app_state_ex/getx/page_getx.dart';
 import 'package:ngoc_hung66131218_flutter_app/bai_giang/listview.dart';
+import 'package:ngoc_hung66131218_flutter_app/model/page_fruit.dart';
 import 'package:ngoc_hung66131218_flutter_app/model/page_fruit_stream.dart';
 import 'package:ngoc_hung66131218_flutter_app/profile/page_profile_v2.dart';
 import 'package:ngoc_hung66131218_flutter_app/profile/profile.dart';
@@ -25,7 +28,10 @@ class PageHome extends StatelessWidget { //0 st ->> stless
             _buildButton2(context, title: "Fruit store", destination: PageListView()),
             _buildButton2(context, title: "GetXApp", destination: GetxApp()),
             _buildButton2(context, title: "Rss", destination: PageRss()),
-            _buildButton2(context, title: "Fruit Store2", destination: PageFruitStream()),
+            _buildButton2(context, title: "Fruit Supabase", destination: PageFruitStream()),
+            _buildButton2(context, title: "Fruit Supabase2", destination: PageFruit()),
+            _buildButton2(context, title: "Page GK", destination: PageGKTest()),
+            _buildButton2(context, title: "Page GK mau", destination: MainPage()),
           ],
         ),
       ),

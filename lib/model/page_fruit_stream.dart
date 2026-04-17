@@ -8,11 +8,11 @@ class PageFruitStream extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Fruit store"),
+        title: Text("Fruit store supabase"),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
       body: StreamBuilder(
-        stream: FruitSnapshot.getFruitStream(),
+        stream: FruitSnapshot.getFruitStreamHTTT(),
         builder: (context, snapshot) {
           if(snapshot.hasError){
             print("Loi roi`" + snapshot.error.toString());
@@ -35,6 +35,9 @@ class PageFruitStream extends StatelessWidget {
           return  GridView.extent(
             maxCrossAxisExtent: 200, //
             childAspectRatio: 0.7,
+            mainAxisSpacing: 7, // Khoảng cách giữa các hàng (dọc)
+            crossAxisSpacing: 7, // Khoảng cách giữa các cột (ngang)
+            padding: const EdgeInsets.all(7), // Lề cách đều xung quanh màn hình
             children: list.map(
               (e) {
                 return Column(
@@ -42,7 +45,6 @@ class PageFruitStream extends StatelessWidget {
                     Image.network(e.anh?? "No image"),
                     Text(e.ten),
                     Text("${e.gia?? 0}"),
-
                   ],
                 );
               },
