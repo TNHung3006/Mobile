@@ -25,6 +25,7 @@ class PageGetxCounter extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Getx Counter"),
+        leading: Icon(Icons.arrow_back),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
       body: Center(

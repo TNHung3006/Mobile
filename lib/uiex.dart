@@ -50,7 +50,7 @@ class _UIExampleState extends State<UIExample> {
                   ),
                   Container( // nếu expanded ở đây thì width không có tác dụng, chỉ flex mới có
                     height: 100,
-                    width: 80,
+                    width: 100,
                     color: Colors.orange,
                     child: Text("Orange"),
                   ),

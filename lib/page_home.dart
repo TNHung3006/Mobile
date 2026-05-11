@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:ngoc_hung66131218_flutter_app/Test-gk/mau/baiontap/tinhtoan.dart';
-import 'package:ngoc_hung66131218_flutter_app/Test-gk/thi-gk-test.dart';
+import 'package:ngoc_hung66131218_flutter_app/Test-gk/mau/mau2/thi-gk-test.dart';
+import 'package:ngoc_hung66131218_flutter_app/Test-gk/ontap/lan1/giaodien.dart';
+import 'package:ngoc_hung66131218_flutter_app/Test-gk/ontap/lan2/GiaoDien.dart';
+import 'package:ngoc_hung66131218_flutter_app/Test-gk/ontap/lan3/GiaoDien.dart';
 import 'package:ngoc_hung66131218_flutter_app/app_state_ex/getx/page_getx.dart';
 import 'package:ngoc_hung66131218_flutter_app/bai_giang/listview.dart';
+import 'package:ngoc_hung66131218_flutter_app/form/page_form_mathang.dart';
 import 'package:ngoc_hung66131218_flutter_app/model/page_fruit.dart';
 import 'package:ngoc_hung66131218_flutter_app/model/page_fruit_stream.dart';
+import 'package:ngoc_hung66131218_flutter_app/profile/page_professional_profile.dart';
 import 'package:ngoc_hung66131218_flutter_app/profile/page_profile_v2.dart';
 import 'package:ngoc_hung66131218_flutter_app/profile/profile.dart';
 import 'package:ngoc_hung66131218_flutter_app/rss/pages/page_rss.dart';
+import 'package:ngoc_hung66131218_flutter_app/sqlite/page_sqlite_app.dart';
+import 'package:ngoc_hung66131218_flutter_app/thi_gk/kimtragk.dart';
+import 'package:ngoc_hung66131218_flutter_app/uiex.dart';
 
 class PageHome extends StatelessWidget { //0 st ->> stless
   const PageHome({super.key});
@@ -20,19 +28,27 @@ class PageHome extends StatelessWidget { //0 st ->> stless
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
       body: Center(
-        child: Column( //3 theo chiều dọc // đặt chuột vào column -> dấu bóng đèn -> wrap with center // để đưa vào giữa
-          children: [
-            _buildButton(context, title: "My profile", destination: MyProfile()),
-            _buildButton(context, title: "My profile v2", destination: PageProfileV2()),
-            _buildButton2(context, title: "Second pages", destination: PageSecond()),
-            _buildButton2(context, title: "Fruit store", destination: PageListView()),
-            _buildButton2(context, title: "GetXApp", destination: GetxApp()),
-            _buildButton2(context, title: "Rss", destination: PageRss()),
-            _buildButton2(context, title: "Fruit Supabase", destination: PageFruitStream()),
-            _buildButton2(context, title: "Fruit Supabase2", destination: PageFruit()),
-            _buildButton2(context, title: "Page GK", destination: PageGKTest()),
-            _buildButton2(context, title: "Page GK mau", destination: MainPage()),
-          ],
+        child: SingleChildScrollView(
+          child: Column( //3 theo chiều dọc // đặt chuột vào column -> dấu bóng đèn -> wrap with center // để đưa vào giữa
+            children: [
+              _buildButton(context, title: "APP Hoa HAu", destination: UIExample()),
+              _buildButton(context, title: "My profile", destination: MyProfile()),
+              _buildButton(context, title: "My profile v2", destination: PageProfileV2()),
+              _buildButton(context, title: "Professional Profile", destination: ProfessionalProfilePage()),
+              _buildButton2(context, title: "Second pages", destination: PageSecond()),
+              _buildButton2(context, title: "Fruit store", destination: PageListView()),
+              _buildButton2(context, title: "GetXApp", destination: GetxApp()),
+              _buildButton2(context, title: "Rss", destination: PageRss()),
+              _buildButton2(context, title: "Kiem Tra GK", destination: KimTraGK()),
+              _buildButton2(context, title: "Fruit Supabase", destination: PageFruitStream()),
+              _buildButton2(context, title: "Fruit Supabase2", destination: PageFruit()),
+              _buildButton2(context, title: "Page GK", destination: PageGKTest()),
+              _buildButton2(context, title: "Page Ontap Chuan", destination: Giaodien()),
+              _buildButton2(context, title: "Page SQLite", destination: SQLiteAPP()),
+              _buildButton2(context, title: "Page Form Mat Hang", destination: PageFormMathang()),
+              _buildButton2(context, title: "Page Ontap tinh toan", destination: GiaoDienLan3()),
+            ],
+          ),
         ),
       ),
     );

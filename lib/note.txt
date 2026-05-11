@@ -1,0 +1,59 @@
+1. Nhóm Điều hướng và Mũi tên
+Icons.arrow_upward: Mũi tên hướng lên.
+
+Icons.arrow_downward: Mũi tên hướng xuống.
+
+Icons.arrow_back: Mũi tên quay lại (hướng sang trái).
+
+Icons.arrow_forward: Mũi tên đi tiếp (hướng sang phải).
+
+Icons.menu: Ba dấu gạch ngang (thường dùng cho menu mở rộng/drawer).
+
+Icons.more_vert: Ba dấu chấm dọc (thường dùng cho menu tùy chọn).
+
+Icons.home: Hình ngôi nhà (Trang chủ).
+
+2. Nhóm Hành động cơ bản
+Icons.add: Dấu cộng (Thêm mới).
+
+Icons.remove: Dấu trừ (Bớt đi).
+
+Icons.close: Dấu X (Đóng / Hủy bỏ).
+
+Icons.check: Dấu tích V (Xác nhận / Hoàn thành).
+
+Icons.search: Hình kính lúp (Tìm kiếm).
+
+Icons.edit: Hình cây bút (Chỉnh sửa).
+
+Icons.delete: Hình thùng rác (Xóa).
+
+Icons.save: Hình đĩa mềm (Lưu dữ liệu).
+
+3. Nhóm Tương tác và Giao tiếp
+Icons.favorite: Hình trái tim tô kín (Yêu thích).
+
+Icons.favorite_border: Hình trái tim chỉ có viền (Chưa yêu thích).
+
+Icons.star: Hình ngôi sao (Đánh giá / Đánh dấu).
+
+Icons.thumb_up: Bàn tay ngón cái hướng lên (Thích / Like).
+
+Icons.share: Biểu tượng chia sẻ.
+
+Icons.chat: Bóng thoại (Nhắn tin / Bình luận).
+
+4. Nhóm Cài đặt và Người dùng
+Icons.settings: Hình bánh răng cưa (Cài đặt).
+
+Icons.person: Hình người (Tài khoản / Cá nhân).
+
+Icons.notifications: Hình quả chuông (Thông báo).
+
+Icons.camera_alt: Hình máy ảnh (Chụp ảnh).
+
+Icons.lock: Hình ổ khóa (Bảo mật / Mật khẩu).
+
+Icons.visibility: Hình con mắt (Hiển thị / Thấy mật khẩu).
+
+Icons.visibility_off: Hình con mắt bị gạch chéo (Ẩn mật khẩu).
