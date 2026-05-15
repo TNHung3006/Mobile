@@ -14,7 +14,9 @@ import 'package:ngoc_hung66131218_flutter_app/profile/page_profile_v2.dart';
 import 'package:ngoc_hung66131218_flutter_app/profile/profile.dart';
 import 'package:ngoc_hung66131218_flutter_app/rss/pages/page_rss.dart';
 import 'package:ngoc_hung66131218_flutter_app/sqlite/page_sqlite_app.dart';
+import 'package:ngoc_hung66131218_flutter_app/supabase/page_login.dart';
 import 'package:ngoc_hung66131218_flutter_app/thi_gk/kimtragk.dart';
+import 'package:ngoc_hung66131218_flutter_app/thongbao/thongbao.dart';
 import 'package:ngoc_hung66131218_flutter_app/uiex.dart';
 
 class PageHome extends StatelessWidget { //0 st ->> stless
@@ -40,6 +42,8 @@ class PageHome extends StatelessWidget { //0 st ->> stless
               _buildButton2(context, title: "GetXApp", destination: GetxApp()),
               _buildButton2(context, title: "Rss", destination: PageRss()),
               _buildButton2(context, title: "Kiem Tra GK", destination: KimTraGK()),
+              _buildButton2(context, title: "Page Call", destination: PageThongBao()),
+              _buildButton2(context, title: "OTP supabase", destination: PageLogin()),
               _buildButton2(context, title: "Fruit Supabase", destination: PageFruitStream()),
               _buildButton2(context, title: "Fruit Supabase2", destination: PageFruit()),
               _buildButton2(context, title: "Page GK", destination: PageGKTest()),
