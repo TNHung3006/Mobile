@@ -3,6 +3,7 @@ import 'package:ngoc_hung66131218_flutter_app/page_home.dart';
 import 'package:ngoc_hung66131218_flutter_app/profile/profile.dart';
 import 'package:ngoc_hung66131218_flutter_app/uiex.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:get/get.dart';
 
 Future<void> main() async{
   await Supabase.initialize(
@@ -19,13 +20,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    //return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
 
         colorScheme: .fromSeed(seedColor: Colors.purpleAccent),
       ),
       home: PageHome(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -68,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
         child: Column(
 
-          mainAxisAlignment: .center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text("Đây là app đầu tiên của tôi!!", style: TextStyle(fontSize: 22),),
             const Text('Bấm vào nút dấu + để tăng giá trị:',style: TextStyle(fontSize: 24, color: Colors.green),),

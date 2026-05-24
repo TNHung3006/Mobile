@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:supabase_auth_ui/supabase_auth_ui.dart';
+import 'package:get/get.dart';
 
 class PageLogin extends StatelessWidget {
   const PageLogin({super.key});
@@ -17,13 +18,13 @@ class PageLogin extends StatelessWidget {
         children: [
           SupaEmailAuth(
             onSignInComplete: (response) {
-
+              if(response.user != null){
+                Get.back();
+              }
             },
             onSignUpComplete: (response) {
               if(response?.user!=null){
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => PageVertifyUser(email: response!.user!.email!),)
-                );
+                Get.to(() => PageVertifyUser(email: response!.user!.email!));
               }
             },
             showConfirmPasswordField: true,
@@ -49,33 +50,24 @@ class PageVertifyUser extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           OtpTextField(
-            numberOfFields: 6,
-            borderColor: Colors.black,
-
-            showFieldAsBox: true,
-            borderWidth: 4.0,
-            fieldWidth: 45,
-
-          //runs when a code is typed in
-          onCodeChanged: (String code) {
-            //handle validation or checks here if necessary
-          },
-          //runs when every textfield is filled
-            onSubmit: (String verificationCode) async {
-              var respone = await Supabase.instance.client.auth
-                  .verifyOTP(
-                email: email,
-                token: verificationCode,
-                type: OtpType.email,
-              );
-              if (respone?.session != null && respone?.session?.user != null) {
-                Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(builder: (context) => PageThongTinUser(),),
-                      (route) => false,
-
+              numberOfFields: 6,
+              borderColor: Colors.black,
+              showFieldAsBox: true,
+              borderWidth: 4.0,
+              fieldWidth: 45,
+              onCodeChanged: (String code) {
+              },
+              onSubmit: (String verificationCode) async {
+                var respone = await Supabase.instance.client.auth
+                    .verifyOTP(
+                  email: email,
+                  token: verificationCode,
+                  type: OtpType.email,
                 );
+                if (respone.session != null && respone.session?.user != null) {
+                  Get.close(2);
+                }
               }
-            }
           ),
         ],
       ),
@@ -96,4 +88,3 @@ class PageThongTinUser extends StatelessWidget {
     );
   }
 }
-

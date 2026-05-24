@@ -28,8 +28,11 @@ class Fruit{
 
   factory Fruit.fromMap(Map<String, dynamic> map) {
     return Fruit(
-      id: map['id'] as int,
-      gia: map['gia'] as int?,
+      // Sử dụng num.parse hoặc kiểm tra kiểu để an toàn hơn
+      id: map['id'] is int ? map['id'] as int : int.parse(map['id'].toString()),
+      gia: map['gia'] != null
+          ? (map['gia'] is int ? map['gia'] as int : int.parse(map['gia'].toString()))
+          : null,
       ten: map['ten'] as String,
       moTa: map['moTa'] as String?,
       anh: map['anh'] as String?,

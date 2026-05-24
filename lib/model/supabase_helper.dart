@@ -20,6 +20,8 @@ Future<Map<int, T>> getMapData<T>({
   required T Function(Map<String, dynamic> map) fromJson,
   required int Function(T t) getID
 }) async{
+  final supabase = Supabase.instance.client;
+  Map<int, T> _map = {};
   final data = await supabase.from(table).select();
   var iterable = data.map((e) => fromJson(e),);
   return Map.fromIterable(
@@ -27,6 +29,25 @@ Future<Map<int, T>> getMapData<T>({
     key: (element) => getID(element),
     value: (element) => element,
   );
+  return _map;
+}
+Future<Map<int, T>> getMapDataFilter<T>({
+  required String table,
+  required String filterColumn,
+  required String filterValue,
+  required T Function(Map<String, dynamic> map) fromJson,
+  required int Function(T t) getID
+}) async{
+  final supabase = Supabase.instance.client;
+  Map<int, T> _map = {};
+  var data = await supabase.from(table).select().eq(filterColumn, filterValue);
+  var iterable = data.map((e) => fromJson(e),);
+  return Map.fromIterable(
+    iterable,
+    key: (element) => getID(element),
+    value: (element) => element,
+  );
+  return _map;
 }
 
 listenDataChange<T>(Map<int, T> maps,{Function()? updateUI,

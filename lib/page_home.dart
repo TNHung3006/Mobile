@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ngoc_hung66131218_flutter_app/Test-gk/mau/baiontap/tinhtoan.dart';
 import 'package:ngoc_hung66131218_flutter_app/Test-gk/mau/mau2/thi-gk-test.dart';
 import 'package:ngoc_hung66131218_flutter_app/Test-gk/ontap/lan1/giaodien.dart';
@@ -9,6 +10,8 @@ import 'package:ngoc_hung66131218_flutter_app/bai_giang/listview.dart';
 import 'package:ngoc_hung66131218_flutter_app/form/page_form_mathang.dart';
 import 'package:ngoc_hung66131218_flutter_app/model/page_fruit.dart';
 import 'package:ngoc_hung66131218_flutter_app/model/page_fruit_stream.dart';
+import 'package:ngoc_hung66131218_flutter_app/model/page_fruit_tre.dart';
+import 'package:ngoc_hung66131218_flutter_app/nhomcuoiki/page_todo.dart';
 import 'package:ngoc_hung66131218_flutter_app/profile/page_professional_profile.dart';
 import 'package:ngoc_hung66131218_flutter_app/profile/page_profile_v2.dart';
 import 'package:ngoc_hung66131218_flutter_app/profile/profile.dart';
@@ -37,6 +40,7 @@ class PageHome extends StatelessWidget { //0 st ->> stless
               _buildButton(context, title: "My profile", destination: MyProfile()),
               _buildButton(context, title: "My profile v2", destination: PageProfileV2()),
               _buildButton(context, title: "Professional Profile", destination: ProfessionalProfilePage()),
+              _buildButton(context, title: "Page To Do", destination: PageToDo()),
               _buildButton2(context, title: "Second pages", destination: PageSecond()),
               _buildButton2(context, title: "Fruit store", destination: PageListView()),
               _buildButton2(context, title: "GetXApp", destination: GetxApp()),
@@ -45,6 +49,7 @@ class PageHome extends StatelessWidget { //0 st ->> stless
               _buildButton2(context, title: "Page Call", destination: PageThongBao()),
               _buildButton2(context, title: "OTP supabase", destination: PageLogin()),
               _buildButton2(context, title: "Fruit Supabase", destination: PageFruitStream()),
+              _buildButton2(context, title: "Fruit Supabase tre", destination: PageFruit_Tre()),
               _buildButton2(context, title: "Fruit Supabase2", destination: PageFruit()),
               _buildButton2(context, title: "Page GK", destination: PageGKTest()),
               _buildButton2(context, title: "Page Ontap Chuan", destination: Giaodien()),
