@@ -26,8 +26,8 @@ Future<Map<int, T>> getMapData<T>({
   var iterable = data.map((e) => fromJson(e),);
   return Map.fromIterable(
     iterable,
-    key: (element) => getID(element),
-    value: (element) => element,
+    key: (t) => getID(t),
+    value: (t) => t,
   );
   return _map;
 }
@@ -44,8 +44,8 @@ Future<Map<int, T>> getMapDataFilter<T>({
   var iterable = data.map((e) => fromJson(e),);
   return Map.fromIterable(
     iterable,
-    key: (element) => getID(element),
-    value: (element) => element,
+    key: (t) => getID(t),
+    value: (t) => t,
   );
   return _map;
 }

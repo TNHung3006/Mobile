@@ -11,11 +11,11 @@ import 'package:ngoc_hung66131218_flutter_app/form/page_form_mathang.dart';
 import 'package:ngoc_hung66131218_flutter_app/model/page_fruit.dart';
 import 'package:ngoc_hung66131218_flutter_app/model/page_fruit_stream.dart';
 import 'package:ngoc_hung66131218_flutter_app/model/page_fruit_tre.dart';
-import 'package:ngoc_hung66131218_flutter_app/nhomcuoiki/page_todo.dart';
 import 'package:ngoc_hung66131218_flutter_app/profile/page_professional_profile.dart';
 import 'package:ngoc_hung66131218_flutter_app/profile/page_profile_v2.dart';
 import 'package:ngoc_hung66131218_flutter_app/profile/profile.dart';
 import 'package:ngoc_hung66131218_flutter_app/rss/pages/page_rss.dart';
+import 'package:ngoc_hung66131218_flutter_app/smart_todo_list_project_nhom19/page_todo.dart';
 import 'package:ngoc_hung66131218_flutter_app/sqlite/page_sqlite_app.dart';
 import 'package:ngoc_hung66131218_flutter_app/supabase/page_login.dart';
 import 'package:ngoc_hung66131218_flutter_app/thi_gk/kimtragk.dart';
@@ -40,8 +40,8 @@ class PageHome extends StatelessWidget { //0 st ->> stless
               _buildButton(context, title: "My profile", destination: MyProfile()),
               _buildButton(context, title: "My profile v2", destination: PageProfileV2()),
               _buildButton(context, title: "Professional Profile", destination: ProfessionalProfilePage()),
-              _buildButton(context, title: "Page To Do", destination: PageToDo()),
               _buildButton2(context, title: "Second pages", destination: PageSecond()),
+              _buildButton2(context, title: "Smart ToDo List", destination: PageToDo()),
               _buildButton2(context, title: "Fruit store", destination: PageListView()),
               _buildButton2(context, title: "GetXApp", destination: GetxApp()),
               _buildButton2(context, title: "Rss", destination: PageRss()),

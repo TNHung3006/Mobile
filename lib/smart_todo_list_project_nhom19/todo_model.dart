@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:sqflite/sqflite.dart';
 
 const String tableToDo = "ToDo";
@@ -10,6 +11,7 @@ class ToDoItem {
   String? reminder;
   bool isCompleted;
   int? priority; // 1=High, 2=Medium, 3=Low
+  int? notificationId; // ID của thông báo được lập lịch
 
   ToDoItem({
     this.id,
@@ -19,6 +21,7 @@ class ToDoItem {
     this.reminder,
     this.isCompleted = false,
     this.priority = 2,
+    this.notificationId,
   });
 
   factory ToDoItem.fromJson(Map<String, dynamic> json) {
@@ -30,6 +33,7 @@ class ToDoItem {
       reminder: json['reminder'],
       isCompleted: json['isCompleted'] == 1 ? true : false,
       priority: json['priority'],
+      notificationId: json['notificationId'],
     );
   }
 
@@ -41,6 +45,7 @@ class ToDoItem {
     'reminder': reminder,
     'isCompleted': isCompleted ? 1 : 0,
     'priority': priority,
+    'notificationId': notificationId,
   };
 }
 
@@ -59,11 +64,20 @@ class DatabaseHelperToDo {
     String? _path = await _getDatatbasePath('todo.db');
     database = await openDatabase(
       _path!,
-      version: 1,
+      version: 2,
       onCreate: (db, version) async {
         await db.execute(
-          'CREATE TABLE $tableToDo (id INTEGER PRIMARY KEY, title TEXT, description TEXT, dueDate TEXT, reminder TEXT, isCompleted INTEGER, priority INTEGER)',
+          'CREATE TABLE $tableToDo (id INTEGER PRIMARY KEY, title TEXT, description TEXT, dueDate TEXT, reminder TEXT, isCompleted INTEGER, priority INTEGER, notificationId INTEGER)',
         );
+      },
+      onUpgrade: (db, oldVersion, newVersion) async {
+        if (oldVersion < 2) {
+          try {
+            await db.execute('ALTER TABLE $tableToDo ADD COLUMN notificationId INTEGER');
+          } catch (e) {
+            debugPrint("Database upgrade note: notificationId column may already exist");
+          }
+        }
       },
     );
     return database;
@@ -73,14 +87,15 @@ class DatabaseHelperToDo {
     int id = await database!.transaction(
       (Transaction txn) async {
         int id = await txn.rawInsert(
-          'INSERT INTO $tableToDo(title, description, dueDate, reminder, isCompleted, priority) VALUES(?, ?, ?, ?, ?, ?)',
+          'INSERT INTO $tableToDo(title, description, dueDate, reminder, isCompleted, priority, notificationId) VALUES(?, ?, ?, ?, ?, ?, ?)',
           [
             todo.title,
             todo.description,
             todo.dueDate,
             todo.reminder,
             todo.isCompleted ? 1 : 0,
-            todo.priority
+            todo.priority,
+            todo.notificationId
           ],
         );
         return id;
@@ -92,7 +107,7 @@ class DatabaseHelperToDo {
   Future<int> update(ToDoItem newTodo, int id) async {
     int count = await database!.transaction((Transaction txn) async {
       int count = await txn.rawUpdate(
-        'UPDATE $tableToDo SET title = ?, description = ?, dueDate = ?, reminder = ?, isCompleted = ?, priority = ? WHERE id = ?',
+        'UPDATE $tableToDo SET title = ?, description = ?, dueDate = ?, reminder = ?, isCompleted = ?, priority = ?, notificationId = ? WHERE id = ?',
         [
           newTodo.title,
           newTodo.description,
@@ -100,6 +115,7 @@ class DatabaseHelperToDo {
           newTodo.reminder,
           newTodo.isCompleted ? 1 : 0,
           newTodo.priority,
+          newTodo.notificationId,
           id
         ],
       );

@@ -6,26 +6,22 @@ import 'package:ngoc_hung66131218_flutter_app/model/supabase_helper.dart';
 import 'package:supabase_auth_ui/supabase_auth_ui.dart';
 
 var supabase = Supabase.instance.client;
+
 class ControllerFruitStore extends GetxController {
   Map<int, Fruit> mapFruits = {};
   Map<int, GioHangItem> gioHang = {};
 
-  // ĐÃ SỬA: Tính tổng số lượng của từng món cộng lại thay vì đếm số dòng
   int get slMHG => gioHang.values.fold(0, (sum, item) => sum + item.soluong);
 
   @override
   void onReady() {
     super.onReady();
-    FruitSnapshot.getMapFruit().then(
-          (value) {
-        mapFruits = value;
-        update(['fruits']);
-      },
-    ).onError(
-          (error, stackTrace) {
-        debugPrint("Lỗi đọc bảng fruits: $error");
-      },
-    );
+    FruitSnapshot.getMapFruit().then((value) {
+      mapFruits = value;
+      update(['fruits']);
+    }).onError((error, stackTrace) {
+      debugPrint("Lỗi đọc bảng fruits: $error");
+    });
 
     if (supabase.auth.currentUser != null) {
       getGioHang();
@@ -33,16 +29,34 @@ class ControllerFruitStore extends GetxController {
   }
 
   void getGioHang() {
-    GioHangItemSnapshot.getGioHang("uid").then(
-          (value) {
-        gioHang = value;
-        update(["gioHang"]);
-      },
-    ).onError(
-          (error, stackTrace) {
-        debugPrint("Lỗi đọc bảng giỏ hàng: $error");
-      },
-    );
+    if (supabase.auth.currentUser == null) return;
+    GioHangItemSnapshot.getGioHang("uid").then((value) {
+      gioHang = value;
+      update(["gioHang"]);
+    }).onError((error, stackTrace) {
+      debugPrint("Lỗi đọc bảng giỏ hàng: ${error.toString()}");
+    });
+  }
+
+  Future<void> dangXuat() async {
+    await supabase.auth.signOut();
+    gioHang.clear();
+    update(["gioHang"]);
+  }
+
+  Future<void> dangNhap() async {
+    getGioHang();
+    update(["gioHang"]);
+  }
+
+  int tongTien() {
+    int tong = 0;
+    for (var item in gioHang.values) {
+      if (item.chon == true) {
+        tong += ((mapFruits[item.fruitId]!.gia ?? 0) * (item.soluong)).toInt();
+      }
+    }
+    return tong;
   }
 
   Future<bool> themMH_vao_GH(Fruit f) async {
